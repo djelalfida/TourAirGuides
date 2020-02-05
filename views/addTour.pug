@@ -1,0 +1,101 @@
+extends base
+
+mixin navItem(link, text, icon, active)
+  li(class=`${active ? 'side-nav--active' : ''}`)
+    a(href=`${link}`)
+      svg
+        use(xlink:href=`img/icons.svg#icon-${icon}`)
+      | #{text}
+
+block content
+  main.main
+    .user-view
+      nav.user-view__menu
+        ul.side-nav
+          +navItem('/me', 'Settings', 'settings')
+          +navItem('/my-tours', 'My bookings', 'briefcase')
+          +navItem('/reviews', 'My reviews', 'star')
+          +navItem('#', 'Billing', 'credit-card')
+          +navItem('/guide', 'Become a guide', 'user')
+          +navItem('/sentApplications', 'Sent applications', 'info')
+
+        - if (user.role === 'admin')
+          .admin-nav
+            h5.admin-nav__heading Admin
+            ul.side-nav
+              +navItem('/tour-manager', 'Manage tours', 'map', true)
+              +navItem('/user-manager', 'Manage users', 'users')
+              +navItem('#', 'Manage reviews', 'star')
+              +navItem('#', 'Manage bookings', 'briefcase')
+
+      .user-view__content
+        .user-view__form-container
+          h2.heading-secondary.ma-bt-md Manage/add Tours
+          
+          form.form.form-tour-data
+            .form__group
+              label.form__label(for='name') Tour Name
+              input#name.form__input(type='text', value=``, required, name='name')
+            .form__group.ma-bt-md
+              label.form__label(for='duration') Duration of the tour
+              input#duration.form__input(type='text', value=``, required, name='duration')
+            .form__group.ma-bt-md
+              label.form__label(for='maxGroupSize') Max. Group size
+              input#maxGroupSize.form__input(type='text', value=``, required, name='maxGroupSize')
+            .form__group.ma-bt-md
+              label.form__label(for='price') Price
+              input#price.form__input(type='text', value=``, required, name='price')
+            .form__group.ma-bt-md
+              label.form__label(for='summary') Summary
+              input#summary.form__input(type='text', value=``, required, name='summary')
+            .form__group.ma-bt-md
+              label.form__label(for='description') Description
+              textarea#description.form__input(rows='4' cols='50', required)
+
+            .form__group.ma-bt-md
+              label.form__label(for='difficulty') Difficulty
+              select#difficulty.form__input(name='difficulty', required)
+                option(value='easy') Easy
+                option(value='medium') Medium
+                option(value='difficult') Difficult
+            
+            .form__group.ma-bt-md
+              label.form__label(for='description-loc') Location Description (example: Brussels, BE)
+              input#description-loc.form__input(type='text', value=``, required, name='description-loc')
+            .form__group.ma-bt-md
+              label.form__label(for='type') Type
+              input#type.form__input(type='text', value=`Point`, required, name='type', disabled)
+            
+            .form__group.ma-bt-md
+              label.form__label(for='coordinates') Coordinates (Lat, Lng)
+              input#coordinates.form__input(type='coordinates', value=``, required, name='coordinates[lat, lng]')
+
+            .form__group.ma-bt-md
+              label.form__label(for='address') Address
+              input#address.form__input(type='address', value=``, required, name='address')
+
+            .form__group.ma-bt-md
+              label.form__label(for='start-dates') Start dates
+              input#start-dates.form__input(type='date', value=``, required, name='start-dates[startDates]')
+
+
+            .form__group.ma-bt-md
+              label.form__label(for='location-id') Location ID
+              input#location-id.form__input(type='text', value=``, required, name='location-id')
+
+            .form__group.ma-bt-md
+              label.form__label(for='location-desc') Location description
+              input#location-desc.form__input(type='text', value=``, required, name='location-desc')
+
+            .form__group.ma-bt-md
+              label.form__label(for='coordinates-location') Coordinates (Lat, Lng)
+              input#coordinates-location.form__input(type='coordinates', value=``, required, name='coordinates-location[lat, lng]')
+
+            .form__group.form__photo-upload
+              input.form__upload(type='file', accept='image/*', id='photo', name='photo')
+              label(for='photo') Choose new photo
+
+            .form__group.right
+              button.btn.btn--small.btn--green#addTourDB Add Tour to database
+              
+        .line &nbsp;

@@ -1,0 +1,54 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='/css/style.css')
+  link(rel='shortcut icon' type='image/png' href='/img/favicon.png')
+  link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:300,300i,700')
+  title TourAirGuides | Create your account!
+// HEADER
+header.header
+  nav.nav.nav--tours
+    a.nav__el(href='/') All tours
+  .header__logo
+    img(src='/img/' alt='logo')
+  nav.nav.nav--user
+    a.nav__el(href='/login') Log in
+    a.nav__el.nav__el--cta(href='/signup') Sign up
+// CONTENT
+main.main
+  .login-form
+    h2.heading-secondary.ma-bt-lg Create your account!
+    form.form.form--signup
+      .form__group
+        label.form__label(for='name') Your name
+        input#name.form__input(type='text' placeholder='' required='')
+      .form__group
+        label.form__label(for='email') Email address
+        input#email.form__input(type='email' placeholder='you@example.com' required='')
+      .form__group.ma-bt-md
+        label.form__label(for='password') Password
+        input#password.form__input(type='password' placeholder='••••••••' required='' minlength='8')
+      .form__group.ma-bt-md
+        label.form__label(for='passwordConfirm') Confirm password
+        input#passwordConfirm.form__input(type='password' placeholder='••••••••' required='' minlength='8')
+      .form__group
+        button.btn.btn--green#sign-up Sign up
+// FOOTER
+footer.footer
+  .footer__logo
+    img(src='/img/logo-green.png' alt='Natour logo')
+  ul.footer__nav
+    li
+      a(href='#') About us
+    li
+      a(href='#') Download apps
+    li
+      a(href='#') Become a guide
+    li
+      a(href='#') Careers
+    li
+      a(href='#') Contact
+  p.footer__copyright &copy; 2019 by Jonas Schmedtmann.
+script(src='https://js.stripe.com/v3/')
+script(src='/js/bundle.js')

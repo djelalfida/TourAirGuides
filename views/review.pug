@@ -1,0 +1,62 @@
+extends base
+
+mixin navItem(link, text, icon, active)
+  li(class=`${active ? 'side-nav--active' : ''}`)
+    a(href=`${link}`)
+      svg
+        use(xlink:href=`img/icons.svg#icon-${icon}`)
+      | #{text}
+
+block content
+  main.main
+    .user-view
+      nav.user-view__menu
+        ul.side-nav
+          +navItem('/me', 'Settings', 'settings')
+          +navItem('/my-tours', 'My bookings', 'briefcase')
+          +navItem('#', 'My reviews', 'star', true)
+          +navItem('#', 'Billing', 'credit-card')
+          +navItem('/guide', 'Become a guide', 'user')
+          +navItem('/sentApplications', 'Sent applications', 'info')
+
+        - if (user.role === 'admin')
+          .admin-nav
+            h5.admin-nav__heading Admin
+            ul.side-nav
+              +navItem('/tour-manager', 'Manage tours', 'map')
+              +navItem('/user-manager', 'Manage users', 'users')
+              +navItem('#', 'Manage reviews', 'star')
+              +navItem('#', 'Manage bookings', 'briefcase')
+
+      .user-view__content
+        .user-view__form-container
+          h2.heading-secondary.ma-bt-md Write a review!
+          
+          //- WITHOUT API
+          //- form.form.form-user-data(action='/submit-user-data' method='POST' enctype='multipart/form-data')
+          
+          //- WITH API
+          form.form.form-review-data
+            .form__group
+                label.form__label(for='select') Select a tour
+                select.form__input(id='tours')
+                  each booking in bookings
+                    option.form__input(value=`${booking.tour.id},${booking.id}`) #{booking.tour.name}
+                  
+
+            .form__group
+              label.form__label(for='review') Review
+              input#review.form__input(type='text', required, placeholder='Amazing tour! Would recommend.' , name='review')
+            .form__group
+              label.form__label(for='review') Star Rating
+              input#star.form__input(type='number', required, placeholder='Amazing tour! Would recommend.' , name='star')
+              input#userid.form__input(type='hidden', required, name='star', value=`${user.id}`)
+
+
+            .form__group.right
+              button.btn.btn--small.btn--green Post review
+              
+        .line &nbsp;
+        
+       
+            

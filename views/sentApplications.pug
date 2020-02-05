@@ -1,0 +1,67 @@
+extends base
+
+mixin navItem(link, text, icon, active)
+  li(class=`${active ? 'side-nav--active' : ''}`)
+    a(href=`${link}`)
+      svg
+        use(xlink:href=`img/icons.svg#icon-${icon}`)
+      | #{text}
+
+block content
+  main.main
+    .user-view-application
+      nav.user-view__menu
+        ul.side-nav
+          +navItem('/me', 'Settings', 'settings')
+          +navItem('/my-tours', 'My bookings', 'briefcase')
+          +navItem('/reviews', 'My reviews', 'star')
+          +navItem('#', 'Billing', 'credit-card')
+          +navItem('/guide', 'Become a guide', 'user')
+          +navItem('/sentApplications', 'Sent applications', 'info', true)
+
+        - if (user.role === 'admin')
+          .admin-nav
+            h5.admin-nav__heading Admin
+            ul.side-nav
+              +navItem('/tour-manager', 'Manage tours', 'map')
+              +navItem('#', 'Manage users', 'users')
+              +navItem('#', 'Manage reviews', 'star')
+              +navItem('#', 'Manage bookings', 'briefcase')
+
+      .user-view__content
+        .user-view__form-container-applications
+          h2.heading-secondary.ma-bt-md Sent applications
+          
+          form.form.form-user-manager
+            .form__group
+              .container
+                ul.responsive-table
+                  li.table-header
+                    .col.col-1 Name
+                    .col.col-2 Send date
+                    .col.col-3 Address
+                    .col.col-4 Status
+                    .col.col-5 About yourself
+                  each application in applications
+                    li.table-row
+                      .col.col-1(data-label='Name')=application.name
+                      .col.col-2(data-label='Date')=moment(application.createdAt).format('MMM Do YYYY')
+                      .col.col-3(data-label='Address')=application.address
+                      .col.col-4(data-label='Stage')=application.stage
+                      .col.col-5(data-label='About')=application.aboutGuide
+              //- table
+              //-   tr
+              //-     th Name
+              //-     th Send date
+              //-     th Address
+              //-     th Status
+              //-   each application in applications
+              //-     tr
+              //-       td=application.name
+              //-       td=moment(application.createdAt).format('MMM Do YYYY')
+              //-       td=application.address
+              //-       td=application.stage
+        .line &nbsp;
+
+       
+            

@@ -1,0 +1,29 @@
+extends base
+
+
+block content
+  main.main
+    .user-view.profile-user
+      .user-view__content
+        .user-view__form-container
+
+            each user in allUsers
+                img.profile__user-photo(src=`/img/users/${user.photo}`, alt=`${user.name.split(' ')[0]}`)
+
+                h1.profile__text-user=`${user.name}`
+                p.profile__text= user.bio
+                        
+                
+                
+                p.profile__text= `Email: ${user.email}`
+                p.profile__text= `Role: ${user.role}`
+
+            
+
+
+
+
+            //- h2.profile-info= `Name: ${profile.name}`
+            //- | 
+            //- h2.profile-info= `Role: ${profile.role}`
+

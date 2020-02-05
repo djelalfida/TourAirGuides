@@ -1,0 +1,57 @@
+extends base
+
+mixin navItem(link, text, icon, active)
+  li(class=`${active ? 'side-nav--active' : ''}`)
+    a(href=`${link}`)
+      svg
+        use(xlink:href=`img/icons.svg#icon-${icon}`)
+      | #{text}
+
+block content
+  main.main
+    .user-view-application
+      nav.user-view__menu
+        ul.side-nav
+          +navItem('/me', 'Settings', 'settings')
+          +navItem('/my-tours', 'My bookings', 'briefcase', true)
+          +navItem('/reviews', 'My reviews', 'star')
+          +navItem('#', 'Billing', 'credit-card')
+          +navItem('/guide', 'Become a guide', 'user')
+          +navItem('/sentApplications', 'Sent applications', 'info')
+
+        - if (user.role === 'admin')
+          .admin-nav
+            h5.admin-nav__heading Admin
+            ul.side-nav
+              +navItem('/tour-manager', 'Manage tours', 'map')
+              +navItem('/user-manager', 'Manage users', 'users')
+              +navItem('#', 'Manage reviews', 'star')
+              +navItem('#', 'Manage bookings', 'briefcase')
+
+      .user-view__content
+        .user-view__form-container-applications
+          h2.heading-secondary.ma-bt-md Booked tours
+          
+          form.form.form-user-manager
+            .form__group
+              .container
+                ul.responsive-table
+                  li.table-header
+                    .col.col-1 Tour Name
+                    .col.col-2 Start Date
+                    .col.col-3 Amount Due
+                    .col.col-4 Payment Status
+                    .col.col-5 Invoice
+                  each booking in bookings
+                    each tour in tours
+                      li.table-row
+                        .col.col-1(data-label='Tour Name')=booking.tour.name
+                        .col.col-2(data-label='Start Dates')=moment(booking.createdAt).format('ll')
+                        .col.col-3(data-label='Amount')=`€${booking.price},00`
+                        .col.col-4(data-label='Payment')=booking.paid
+                        a.col.col-5#btn-invoice(href=`http://tourairguides.com/invoice/${booking.id}`, target='_blank') Invoice
+              
+        .line &nbsp;
+
+       
+            

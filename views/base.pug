@@ -1,0 +1,48 @@
+doctype html
+html
+  head
+    block head
+      meta(charset='UTF-8')
+      meta(name='viewport' content='width=device-width, initial-scale=1.0')
+      link(rel='stylesheet' href='/css/style.css')
+      link(rel='stylesheet' href='/css/table.css')
+      link(rel='shortcut icon' type='image/png' href='/img/favicon.png')
+      link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:300,300i,700')
+      title TourGuide | #{title}
+
+  body(data-alert=`${alert ? alert : ''}`)
+    // HEADER
+    include _header
+
+    // CONTENT
+    block content
+      h1 This is a placeholder heading
+
+    // FOOTER
+    include _footer
+
+
+    //- script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js')
+    //- script(src='./js/mapbox.js')
+    //- script(src='./js/login.js')
+    //- script(src='/js/')
+    //- script(src='./js/bundle.js.map')
+    script(src='https://js.stripe.com/v3/')
+    script(src='/js/bundle.js')
+
+
+
+    // Start of Tawk.to Script
+  script(type='text/javascript').
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/5d7a85c99f6b7a4457e163fb/default';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+  // End of Tawk.to Script
+
+

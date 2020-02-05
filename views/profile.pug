@@ -1,0 +1,30 @@
+extends base
+
+
+block content
+  main.main
+    .user-view.profile-user
+      .user-view__content
+        .user-view__form-container
+            img.profile__user-photo(src=`/img/users/${profile.photo}`, alt=`${profile.name.split(' ')[0]}`)
+
+            //- a.btn.btn--green.btn--small.middle(href=`/me`) EDIT PROFILE
+
+            h1.profile__text-user=`${profile.name}`
+            p.profile__text= profile.bio
+                    
+
+            
+            p.profile__text= `Email: ${profile.email}`
+            p.profile__text= `Role: ${profile.role}`
+            p.profile__text= `Booked tours: ${aantalBooking}`
+
+            
+
+
+
+
+            //- h2.profile-info= `Name: ${profile.name}`
+            //- | 
+            //- h2.profile-info= `Role: ${profile.role}`
+

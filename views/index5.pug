@@ -1,0 +1,130 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Document
+  link(rel='stylesheet' href='/css/index.css')
+  link(rel='stylesheet' href='https://unpkg.com/aos@next/dist/aos.css')
+nav.nav-bar
+  ul
+    li
+      a(href='#') Home
+    li
+      a(href='#') About
+    li
+      a(href='tours.html') Tours
+  h2.text-header TourAirGuides
+  a.login-btn(href='login.html') Login
+  a.register-btn Sign Up
+header
+  img.img-header(draggable='false' src='img/img.svg')
+  img#ipad.img-header(draggable='false' src='img/ipad.svg')
+  .left-content
+    h1#content-text(data-aos='fade-right' data-aos-duration='800')
+      | Introduce Your Tours
+      br
+      span.purple Quickly
+      |  &amp;
+      span.purple Effectively
+    p.text-content(data-aos='fade-down' data-aos-delay='800' data-aos-duration='800')
+      | Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+      | commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
+      | et magnis dis parturient montes, nascetur ridiculus
+      br
+      br
+      | mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
+      |         quis, sem. Nulla consequat massa quis enim.
+    a#btn-discover-tours(data-aos='fade-left' data-aos-delay='1500' data-aos-duration='800') Discover tours
+    a#btn-learn-tours(data-aos='fade-right' data-aos-delay='1600' data-aos-duration='800') Learn More
+.premium-selection
+  h1#premium-text(data-aos='fade-right' data-aos-duration='800') Our Premium Selection
+  p#premium-info(data-aos='fade-left' data-aos-delay='800' data-aos-duration='800')
+    | TourAirGuides premium
+    | selection reviewed by thousand of users down below 
+    br
+    |  are the best
+    |       rated
+    |       users on TourAirGuides.
+  img#tech-img(draggable='false' src='img/tech.svg' data-aos='fade-left' data-aos-delay='1400' data-aos-duration='800')
+  .features
+    img(draggable='false' src='img/medal.svg' data-aos='fade-left' data-aos-delay='1800' data-aos-duration='800')
+    .feature-1
+      h2#prem-text(data-aos='fade-left' data-aos-delay='1900' data-aos-duration='700')
+        | Featured tours
+        p.prem-info(data-aos='fade-left' data-aos-delay='2000' data-aos-duration='700')
+          | Lorem ipsum dolor sit
+          | amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+    .feature-2
+      img(draggable='false' src='img/ruby.svg' data-aos='fade-left' data-aos-delay='1800' data-aos-duration='700')
+      h2#prem-text(data-aos='fade-left' data-aos-delay='2000' data-aos-duration='700')
+        | Premium Quality
+        p.prem-info(data-aos='fade-left' data-aos-delay='2000' data-aos-duration='700')
+          | Lorem ipsum dolor sit
+          | amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+// ROW 1
+.featured-tours
+  .row(data-aos='fade-right' data-aos-duration='800')
+    .container-img
+      img.img-background(src='img/clarisse-meyer-ELl2U1Qt3to-unsplash.png')
+      h2.txt-img Discover the Mountains
+      hr
+      .featured-content(data-aos='fade-left' data-aos-delay='700' data-aos-duration='600')
+        h1.quote-text(data-aos='fade-left' data-aos-delay='1400' data-aos-duration='600')
+          | &ldquo;One of my best
+          | tours&rdquo;
+        .photo-and-content
+          img.featured-user-photo(src='img/vince-fleming-j3lf-Jn6deo-unsplash.png')
+          p.user-info
+            | - Vice Fleming 
+            br
+            |               28 years old 
+            br
+            |               &quot;You are the shuckiest shuck faced shuck in the world&quot;
+  // ROW 2
+  .row(data-aos='fade-right' data-aos-duration='800')
+    .container-img
+      img.img-background(src='img/oliver-plattner-AUlmpoJcRdE-unsplash.png')
+      h2.txt-img Discover San Francisco
+      hr
+      .featured-content(data-aos='fade-left' data-aos-delay='700' data-aos-duration='600')
+        h1.quote-text(data-aos='fade-left' data-aos-delay='1400' data-aos-duration='600')
+          | &ldquo;One of my best
+          | tours&rdquo;
+        .photo-and-content
+          img.featured-user-photo(src='img/emile-guillemot-LSP9Tpavbms-unsplash.png')
+          p.user-info
+            | - Zahir Mays 
+            br
+            |               20 years old 
+            br
+            |               &quot;You are the shuckiest shuck faced shuck in the world&quot;
+  // ROW 3
+  .row(data-aos='fade-right' data-aos-duration='800')
+    .container-img
+      img.img-background(src='img/samuel-scrimshaw-2oFdVd00xOg-unsplash.png')
+      h2.txt-img Discover London
+      hr
+      .featured-content(data-aos='fade-left' data-aos-delay='700' data-aos-duration='600')
+        h1.quote-text(data-aos='fade-left' data-aos-delay='1400' data-aos-duration='600')
+          | &ldquo;One of my best
+          | tours&rdquo;
+        .photo-and-content
+          img.featured-user-photo(src='img/aleksandr-minakov-xDyqR14KyAs-unsplash.png')
+          p.user-info
+            | - YEET PARKIET 
+            br
+            |               23 years old 
+            br
+            |               &quot;You are the shuckiest shuck faced shuck in the world&quot;
+.footer
+  .footer-top
+    h1.footer-text TourAirGuides
+    p.copyright &copy;2019 Djelal Fida
+  hr#footer-hr
+  .footer-down
+script(src='https://unpkg.com/aos@next/dist/aos.js')
+script.
+  AOS.init();
+  AOS.init({
+  once: true
+  })
