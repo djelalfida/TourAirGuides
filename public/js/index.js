@@ -65,7 +65,7 @@ if (loginForm)
 if (reviewForm) {
   reviewForm.addEventListener('submit', e => {
     e.preventDefault();
-    const rating = document.getElementById('star').value;
+
     const review = document.getElementById('review').value;
     const user = document.getElementById('userid').value;
     const selectTour = document.getElementById('tours');
@@ -73,7 +73,11 @@ if (reviewForm) {
     const booking = selectTour.options[selectTour.selectedIndex].value.split(',')[1];
 
 
-    sendReview(review, rating, tour, user, booking);
+    const id = document.querySelector('input[name="rating"]:checked').value;
+    console.log(id);
+
+
+    sendReview(review, id, tour, user, booking);
   });
 }
 

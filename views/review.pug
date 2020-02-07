@@ -49,7 +49,29 @@ block content
               input#review.form__input(type='text', required, placeholder='Amazing tour! Would recommend.' , name='review')
             .form__group
               label.form__label(for='review') Star Rating
-              input#star.form__input(type='number', required, placeholder='Amazing tour! Would recommend.' , name='star')
+              fieldset.rating
+                input#star5(type='radio' name='rating' value='5')
+                label.full(for='star5' title='Awesome - 5 stars')
+                input#star4half(type='radio' name='rating' value='4.5')
+                label.half(for='star4half' title='Pretty good - 4.5 stars')
+                input#star4(type='radio' name='rating' value='4')
+                label.full(for='star4' title='Pretty good - 4 stars')
+                input#star3half(type='radio' name='rating' value='3.5')
+                label.half(for='star3half' title='Meh - 3.5 stars')
+                input#star3(type='radio' name='rating' value='3')
+                label.full(for='star3' title='Meh - 3 stars')
+                input#star2half(type='radio' name='rating' value='2.5')
+                label.half(for='star2half' title='Kinda bad - 2.5 stars')
+                input#star2(type='radio' name='rating' value='2')
+                label.full(for='star2' title='Kinda bad - 2 stars')
+                input#star1half(type='radio' name='rating' value='1.5')
+                label.half(for='star1half' title='Meh - 1.5 stars')
+                input#star1(type='radio' name='rating' value='1')
+                label.full(for='star1' title='Sucks big time - 1 star')
+                input#starhalf(type='radio' name='rating' value='half')
+                label.half(for='starhalf' title='Sucks big time - 0.5 stars')
+                span#result
+
               input#userid.form__input(type='hidden', required, name='star', value=`${user.id}`)
 
 
